@@ -15,8 +15,10 @@ def jpeg_to_png(path: str) -> None:
 
     # processing to the format conversion
     for image in pictures:
-        im = Image.open(image)
-        im.save(image.split(".")[0] + ".png")
+        if "jpeg" in image:
+            im = Image.open(image)
+            im.save(image.split(".")[0] + ".png")
+            os.remove(image)
 
 
 jpeg_to_png("/Users/finney/Desktop/JPEG")
